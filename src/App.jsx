@@ -26,7 +26,7 @@ function App() {
                 <Square
                   key={index}
                   index={index}
-                  children={_}
+                  stateSquare={_}
                   updateBoard={updateBoard}
                 />
               )
@@ -36,11 +36,11 @@ function App() {
         <section className="turn">
           <Square
             isSelected={turn === turns.x}
-            children={turns.x}
+            stateSquare={turns.x}
           />
           <Square
             isSelected={turn === turns.o}
-            children={turns.o}
+            stateSquare={turns.o}
           />
         </section>
       </main>
