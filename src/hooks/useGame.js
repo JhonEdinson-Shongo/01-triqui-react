@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { checkWinner, restLocalStorage, saveGameLocalStorage } from "../logic/logic";
 import { turns } from "../constants/constants";
+import confetti from "canvas-confetti";
 
 export const useGame = () => {
   const [board, setBoard] = useState(() => {
@@ -23,6 +24,7 @@ export const useGame = () => {
     if(isWinner) {
       restLocalStorage()
       setWinner(isWinner)
+      confetti()
       return
     }
     saveGameLocalStorage(newBoard, newTurn)
