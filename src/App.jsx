@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <main className="board">
-        <h1>Triki</h1>
+        <h1>triqui game</h1>
         <section className="game">
           {
             board.map((_, index) => {
