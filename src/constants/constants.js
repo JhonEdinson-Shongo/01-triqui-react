@@ -4,6 +4,11 @@ export const stateGame = {
   winnerO: `Ganó el jugador ${turns.o}`,
   empate: 'El juego se empato',
 }
+export const tableScoreGame = {
+  winnerX: 0,
+  winnerO: 0,
+  empate: 0,
+}
 export const winnerCombos = [
   [0, 1, 2],
   [3, 4, 5],

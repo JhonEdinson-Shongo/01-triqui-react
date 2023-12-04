@@ -11,11 +11,11 @@ export const checkWinner = (checkBoard) => {
       const win = checkBoard[a] === turns.x
         ? stateGame.winnerX
         : stateGame.winnerO
-      return win
+      return { text: win, win: checkBoard[a] }
     }
   }
   if(!checkBoard.includes(null)) {
-    return stateGame.empate
+    return { text: stateGame.empate, win: null }
   }
 }
 
@@ -24,7 +24,15 @@ export const saveGameLocalStorage = (newBoard, newTurn) => {
   window.localStorage.setItem('turn', newTurn)
 }
 
-export const restLocalStorage = () => {
+export const saveScoreTableLocalStorage = (newScoreGame) => {
+  window.localStorage.setItem('scoreTable', JSON.stringify(newScoreGame))
+}
+
+export const resetLocalStorage = () => {
   window.localStorage.removeItem('board')
   window.localStorage.removeItem('turn')
+}
+
+export const resetScoreTableLocalStorage = () => {
+  window.localStorage.removeItem('scoreTable')
 }
