@@ -21,8 +21,13 @@ export const useGame = () => {
   const [scoreGame, setScoreGame] = useState(() => {
     const scoreGameLocalStorage = window.localStorage.getItem('scoreTable')
     return  scoreGameLocalStorage ? JSON.parse(scoreGameLocalStorage) : tableScoreGame
-  }
-  )
+  })
+  const [mute, setMute] = useState(() => {
+    // const muteLocalStorage = window.localStorage.getItem('stateSound')
+    // return muteLocalStorage ? JSON.parse(muteLocalStorage) : false
+    return false
+  })
+  const [openConfig, setOpenConfig] = useState(false)
 
   const [winner, setWinner] = useState(null)
 
@@ -63,13 +68,26 @@ export const useGame = () => {
     setScoreGame(tableScoreGame)
   }
 
+  const changeStateMusic = () => {
+    window.localStorage.setItem('stateSound', !mute)
+    setMute(!mute)
+  };
+
+  const toggleConfig = () => {
+    setOpenConfig(!openConfig)
+  }
+
   return {
     board,
     turn,
     winner,
     scoreGame,
+    mute,
+    openConfig,
     updateBoard,
     resetGame,
     restoreScoreTable,
+    changeStateMusic,
+    toggleConfig,
   }
 }

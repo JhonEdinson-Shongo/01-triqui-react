@@ -1,9 +1,11 @@
+import { useGame } from "./hooks/useGame";
+import { turns, stateGame } from "./constants/constants";
+
 import { Square } from "./components/Square";
 import { StatusGame } from "./components/StatusGame";
 import { ScoreTable } from "./components/ScoreTable";
-import { turns, stateGame } from "./constants/constants";
-import { useGame } from "./hooks/useGame";
-
+import { MusicButton } from "./components/MusicButton";
+import { ConfigGame } from "./components/ConfigGame";
 
 function App() {
   const {
@@ -11,14 +13,24 @@ function App() {
     turn,
     winner,
     scoreGame,
+    mute,
+    openConfig,
     updateBoard,
     resetGame,
     restoreScoreTable,
+    changeStateMusic,
+    toggleConfig,
   } = useGame()
 
   return (
     <>
       <main className="board">
+        <header className="config">
+          <MusicButton mute={ mute } changeStateMusic={ changeStateMusic } />
+          <button className="btn-icon" onClick={ toggleConfig }>
+            <img src="./config.svg" alt="image to open config"/>
+          </button>
+        </header>
         <h1>triqui game</h1>
         <section className="game">
           {
@@ -64,7 +76,9 @@ function App() {
               winner={turn}
             />
         }
-        
+        {
+          openConfig && <ConfigGame toggleConfig={ toggleConfig }/>
+        }
       </main>
     </>
   )

@@ -86,7 +86,7 @@ body {
   background: #09f;
 }
 
-.winner {
+.winner, .config-modal {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -144,4 +144,52 @@ body {
   padding: .5rem;
   text-align: center;
   border: 1px solid #eee;
+}
+
+.config {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-icon {
+  padding: 8px !important;
+  width: auto !important;
+  margin: 25px 10px !important;
+}
+.config button:last-child {
+  margin-right: 0;
+}
+.btn-icon:focus {
+  outline: transparent;
+}
+.btn-icon:hover {
+  background-color: #ffffff10 !important;
+  box-shadow: -2px 2px #fff !important;
+  transform: translate(2px, -2px) !important;
+}
+
+.config-modal .content-config {
+  background: #111;
+  min-height: 300px;
+  min-width: 320px;
+  border: 2px solid #eee;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.config-modal .content-config header .btn-close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.config-modal .content-config footer a {
+  text-decoration: none;
 }
