@@ -17,12 +17,10 @@ jobs:
       run: |
         node -e "
           let envVars = process.env.PRODUCTION_ENV
-          envVars = envVars.replace('PRODUCTION_ENV=', '').split('\n')
-          console.log(envVars, '<=====>')
+          envVars = envVars.replace('PRODUCTION_ENV=', '').split('\r\n')
           for(i=0; i < envVars.length; i++) {
               let [key_env, val_env] = envVars[i].split('=')
-              console.log(key_env, val_env)
-              process.env[key_env] = val_env
+              process.env[key_env.trim()] = val_env.trim()
           }
         "
     - name: Printing env's
