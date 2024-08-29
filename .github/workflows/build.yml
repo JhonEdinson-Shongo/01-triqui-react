@@ -16,9 +16,12 @@ jobs:
     - name: Reading env vars 🚀
       run: |
         node -e "
-          let envVars = process.env.PRODUCTION_ENV
-          console.log(envVars)
-          console.log(envVars.split('\n'))
+          let envVars = process.env.PRODUCTION_ENV.split('\r\n')
+          for(i=0; i < envVars.length; i++) {
+            let [key_env, val_env] = envVars[i].split('=')
+            process.env[key_env] = val_env
+          }
+          printenv
         "
     - name: Checkout 🛎️
       uses: actions/checkout@v3
