@@ -17,7 +17,7 @@ jobs:
       run: |
         node -e "
           let envVars = process.env.PRODUCTION_ENV
-          envvars = envvars.split('\r\n')
+          envVars = envVars.split('\r\n')
           for(i=0; i < envVars.length; i++) {
             let [key_env, val_env] = envVars[i].split('=')
             process.env[key_env] = val_env
