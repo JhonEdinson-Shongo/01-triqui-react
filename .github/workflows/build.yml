@@ -6,7 +6,7 @@ name: build proyect
 on:
   workflow_dispatch:
 env:
-  env_var: ${{ vars.TOKEN_API }}
+  PRODUCTION_ENV: ${{ vars.PRODUCTION_ENV }}
 jobs:
   build:
 
@@ -14,7 +14,12 @@ jobs:
 
     steps:
     - name: Reading env vars 🚀
-      run: printenv
+      run: |
+        node -e "
+          let envVars = process.env.PRODUCTION_ENV
+          console.log(envVars)
+          console.log(envVars.split('\n'))
+        "
     - name: Checkout 🛎️
       uses: actions/checkout@v3
     - name: installing dependencies
