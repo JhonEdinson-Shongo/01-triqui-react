@@ -5,14 +5,15 @@ name: build proyect
 
 on:
   workflow_dispatch:
-
+env:
+  env_var: ${{ vars.TOKEN_API }}
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - name: ${{ vars }}
+    - name: Reading env vars 🚀
       run: printenv
     - name: Checkout 🛎️
       uses: actions/checkout@v3
