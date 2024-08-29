@@ -20,8 +20,12 @@ jobs:
           envVars = envVars.replace('PRODUCTION_ENV=', '').split('\r\n')
           for(i=0; i < envVars.length; i++) {
               let [key_env, val_env] = envVars[i].split('=')
+              console.log('====> ', key_env , ' <====')
+              console.log('<==== ', val_env , ' ====>')
               process.env[key_env.trim()] = val_env.trim()
           }
+          console.log('ENV VARS')
+          console.log(process.env)
         "
     - name: Printing env's
       run: printenv
