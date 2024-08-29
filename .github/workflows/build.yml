@@ -16,11 +16,13 @@ jobs:
     - name: Reading env vars 🚀
       run: |
         node -e "
-          let envVars = process.env.PRODUCTION_ENV.replace('PRODUCTION_ENV=', '')
-          envVars = envVars.split('\r\n')
+          let envVars = process.env.PRODUCTION_ENV
+          envVars = envVars.replace('PRODUCTION_ENV=', '').split('\n')
+          console.log(envVars, '<=====>')
           for(i=0; i < envVars.length; i++) {
-            let [key_env, val_env] = envVars[i].split('=')
-            process.env[key_env] = val_env
+              let [key_env, val_env] = envVars[i].split('=')
+              console.log(key_env, val_env)
+              process.env[key_env] = val_env
           }
         "
     - name: Printing env's
