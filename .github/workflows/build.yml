@@ -21,8 +21,9 @@ jobs:
             let [key_env, val_env] = envVars[i].split('=')
             process.env[key_env] = val_env
           }
-          printenv
         "
+    - name: Printing env's
+      run: printenv
     - name: Checkout 🛎️
       uses: actions/checkout@v3
     - name: installing dependencies
