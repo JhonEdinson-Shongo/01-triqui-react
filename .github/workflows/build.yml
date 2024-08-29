@@ -16,7 +16,7 @@ jobs:
     - name: Reading env vars 🚀
       run: |
         node -e "
-          let envVars = process.env.PRODUCTION_ENV
+          let envVars = process.env.PRODUCTION_ENV.replace('PRODUCTION_ENV=', '')
           envVars = envVars.split('\r\n')
           for(i=0; i < envVars.length; i++) {
             let [key_env, val_env] = envVars[i].split('=')
