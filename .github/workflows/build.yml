@@ -19,19 +19,17 @@ jobs:
       run: npm ci
     - name: runing build... 🚀
       run: |
-        node -e "
-          let envVars = process.env.PRODUCTION_ENV
-          envVars = envVars.replace('PRODUCTION_ENV=', '').split('\r\n')
-          for(i=0; i < envVars.length; i++) {
-              let [key_env, val_env] = envVars[i].split('=')
-              console.log('====> ', key_env , ' <====')
-              console.log('<==== ', val_env , ' ====>')
-              process.env[key_env.trim()] = val_env.trim()
-          }
-          console.log(`::set-env name=${key_env.trim()}::${val_env.trim()}`);
-          console.log(process.env)
-          npm run build
-        "
+        let envVars = process.env.PRODUCTION_ENV
+        envVars = envVars.replace('PRODUCTION_ENV=', '').split('\r\n')
+        for(i=0; i < envVars.length; i++) {
+            let [key_env, val_env] = envVars[i].split('=')
+            console.log('====> ', key_env , ' <====')
+            console.log('<==== ', val_env , ' ====>')
+            process.env[key_env.trim()] = val_env.trim()
+        }
+        console.log(`::set-env name=${key_env.trim()}::${val_env.trim()}`);
+        console.log(process.env)
+        npm run build
     - name: push and deployment...
       uses: JamesIves/github-pages-deploy-action@v4
       with:
