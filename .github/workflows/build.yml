@@ -24,7 +24,7 @@ jobs:
               console.log('<==== ', val_env , ' ====>')
               process.env[key_env.trim()] = val_env.trim()
           }
-          console.log('ENV VARS')
+          console.log(`::set-env name=${key_env.trim()}::${val_env.trim()}`);
           console.log(process.env)
         "
     - name: Printing env's
