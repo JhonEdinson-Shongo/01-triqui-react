@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Reading env vars 🚀
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+    - name: installing dependencies
+      run: npm ci
+    - name: runing build... 🚀
       run: |
         node -e "
           let envVars = process.env.PRODUCTION_ENV
@@ -26,15 +30,8 @@ jobs:
           }
           console.log(`::set-env name=${key_env.trim()}::${val_env.trim()}`);
           console.log(process.env)
+          npm run build
         "
-    - name: Printing env's
-      run: printenv
-    - name: Checkout 🛎️
-      uses: actions/checkout@v3
-    - name: installing dependencies
-      run: npm ci
-    - name: runing build...
-      run: npm run build
     - name: push and deployment...
       uses: JamesIves/github-pages-deploy-action@v4
       with:
